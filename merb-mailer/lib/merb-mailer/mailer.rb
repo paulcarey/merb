@@ -48,7 +48,7 @@ module Merb
 
     # Sends the mail using sendmail.
     def sendmail
-      sendmail = IO.popen("#{config[:sendmail_path]} #{@mail.to}", 'w+')
+      sendmail = IO.popen("#{config[:sendmail_path]} #{@mail.to.join(',')}", 'w+')
       sendmail.puts @mail.to_s
       sendmail.close
     end
